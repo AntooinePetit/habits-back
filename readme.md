@@ -19,6 +19,7 @@ POST    `/habits`             : Pour créer une nouvelle habitude
 POST    `/entries/:id`        : Pour Créer une nouvelle entrée d'une habitude
 DELETE  `/habits/:id`         : Pour supprimer une habitude
 DELETE  `/entries/:id`        : Pour supprimer une entrée
+DELETE  `/entries/habit/:id`  : Pour supprimer toutes les entrées d'une habitude
 
 ## User stories
 

@@ -14,5 +14,7 @@ router.get('/id/:id', entriesController.getAllEntriesFromOneHabit)
 router.post("/:id", entriesController.createEntry);
 // DELETE `/entries/:id` : Pour supprimer une entrée
 router.delete('/:id', entriesController.deleteEntry)
+// DELETE `/entries/habit/:id` : Pour supprimer toutes les entrées d'une habitude
+router.delete('/habit/:id', entriesController.deleteAllEntryOfOneHabit)
 
 module.exports = router;

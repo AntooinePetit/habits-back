@@ -70,3 +70,12 @@ exports.deleteEntry = async (req, res) => {
     res.status(500).json({ message: error.message });
   }
 };
+
+exports.deleteAllEntryOfOneHabit = async (req, res) => {
+  try {
+    await Entry.deleteMany({ habit_id: req.params.id });
+    res.status(200).json({ message: "Entrées supprimées" });
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+};
