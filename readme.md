@@ -14,10 +14,10 @@ GET     `/habits`             : Pour récupérer toutes les habitudes
 GET     `/entries`            : Pour récupérer toutes les entrées
 GET     `/habits/:id`         : Pour récupérer une habitude par son identifiant
 GET     `/entries/:date`      : Pour récupérer les entrées d'une journée précise
-GET     `/entries/:date/:id`  : Pour récupérer les entrées d'une journée précise et d'une habitude précise
 POST    `/habits`             : Pour créer une nouvelle habitude
 POST    `/entries/:id`        : Pour Créer une nouvelle entrée d'une habitude
 DELETE  `/habits/:id`         : Pour supprimer une habitude
+DELETE  `/entries/:id`        : Pour supprimer une entrée
 
 ## User stories
 

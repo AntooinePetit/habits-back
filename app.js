@@ -18,7 +18,7 @@ const habitsRoutes = require("./routes/habitsRoutes");
 const entriesRoutes = require("./routes/entriesRoutes");
 
 app.use("/api/v1/habits", habitsRoutes);
-// app.use("/api/v1/entries", entriesRoutes);
+app.use("/api/v1/entries", entriesRoutes);
 
 app.get("/", (req, res) => {
   res.send("Il n'y a rien à voir ici");
