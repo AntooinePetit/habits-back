@@ -39,6 +39,17 @@ exports.getAllEntriesFromOneDay = async (req, res) => {
   }
 };
 
+exports.getAllEntriesFromOneHabit = async (req, res) => {
+  try {
+    const habit = await Habit.findById(req.params.id);
+    if (!habit) res.status(404).json({ message: "Habitude introuvable" });
+    const entries = await Entry.find({ habit_id: habit._id });
+    res.status(200).json(entries);
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+};
+
 exports.createEntry = async (req, res) => {
   try {
     const habit = await Habit.findById(req.params.id);
