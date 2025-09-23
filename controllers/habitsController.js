@@ -9,16 +9,6 @@ exports.getAllHabits = async (req, res) => {
   }
 };
 
-exports.getOneHabit = async (req, res) => {
-  try {
-    const habit = await Habit.findById(req.params.id);
-    if (!habit) res.status(404).json({ message: "Habitude introuvable" });
-    res.status(200).json(habit);
-  } catch (error) {
-    res.status(500).json({ message: error.message });
-  }
-};
-
 exports.createHabit = async (req, res) => {
   try {
     const { name } = req.body;

@@ -10,16 +10,14 @@
 
 ## Les endpoints
 
-GET     `/habits`             : Pour récupérer toutes les habitudes
-GET     `/entries`            : Pour récupérer toutes les entrées
-GET     `/habits/:id`         : Pour récupérer une habitude par son identifiant
-GET     `/entries/date/:date` : Pour récupérer les entrées d'une journée précise
-GET     `/entries/id/:id`     : Pour récupérer les entrées d'une habitude précise
-POST    `/habits`             : Pour créer une nouvelle habitude
-POST    `/entries/:id`        : Pour Créer une nouvelle entrée d'une habitude
-DELETE  `/habits/:id`         : Pour supprimer une habitude
-DELETE  `/entries/:id`        : Pour supprimer une entrée
-DELETE  `/entries/habit/:id`  : Pour supprimer toutes les entrées d'une habitude
+GET     `/habits`             : Pour récupérer toutes les habitudes 
+GET     `/entries/:date/:id`  : Pour récupérer les entrées d'une journée précise et d'une habitude précise 
+GET     `/entries/:id`        : Pour récupérer les entrées d'une habitude précise 
+POST    `/habits`             : Pour créer une nouvelle habitude 
+POST    `/entries/:id`        : Pour créer une nouvelle entrée d'une habitude 
+DELETE  `/habits/:id`         : Pour supprimer une habitude 
+DELETE  `/entries/:id`        : Pour supprimer une entrée 
+DELETE  `/entries/habit/:id`  : Pour supprimer toutes les entrées d'une habitude 
 
 ## User stories
 

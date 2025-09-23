@@ -1,15 +1,6 @@
 const Entry = require("../models/entriesModel");
 const Habit = require("../models/habitsModel");
 
-exports.getAllEntries = async (req, res) => {
-  try {
-    const entries = await Entry.find();
-    res.status(200).json(entries);
-  } catch (error) {
-    res.status(500).json({ message: error.message });
-  }
-};
-
 exports.getAllEntriesFromOneDay = async (req, res) => {
   try {
     const date = req.params.date.split("-");
@@ -23,16 +14,14 @@ exports.getAllEntriesFromOneDay = async (req, res) => {
       Number(date[1]) - 1,
       Number(date[2]) + 1
     );
+    const id = req.params.id;
     const entries = await Entry.find({
       date: {
         $gte: start,
         $lt: end,
       },
+      habit_id: id,
     });
-    if (entries.length == 0)
-      res
-        .status(404)
-        .json({ message: "Aucune entrée trouvée pour cette date" });
     res.status(200).json(entries);
   } catch (error) {
     res.status(500).json({ message: error.message });
