@@ -1,38 +1,145 @@
-# Suivi d'Habitudes
+# API - Suivi d'Habitudes
 
-- **Concept :** Une application pour cocher chaque jour si on a réalisé une habitude (ex: "Boire 2L d'eau").
-- **Données :** Habitude (id, nom), Entrée (id, habitude_id, date).
-- **Opérations CRUD :**
-  - `CREATE` : Ajouter une nouvelle habitude à suivre.
-  - `READ` : Lister les habitudes et leurs entrées pour un jour donné.
-  - `UPDATE` : (Ici, l'update est moins pertinent, on se concentre sur C/R/D).
-  - `DELETE` : Marquer une habitude comme "réalisée" pour aujourd'hui (ce qui revient à un CREATE d'une entrée) ou supprimer une habitude.
+## Description
 
-## Les endpoints
-
-GET     `/habits`             : Pour récupérer toutes les habitudes 
-GET     `/entries/:date/:id`  : Pour récupérer les entrées d'une journée précise et d'une habitude précise 
-GET     `/entries/:id`        : Pour récupérer les entrées d'une habitude précise 
-POST    `/habits`             : Pour créer une nouvelle habitude 
-POST    `/entries/:id`        : Pour créer une nouvelle entrée d'une habitude 
-DELETE  `/habits/:id`         : Pour supprimer une habitude 
-DELETE  `/entries/:id`        : Pour supprimer une entrée 
-DELETE  `/entries/habit/:id`  : Pour supprimer toutes les entrées d'une habitude 
-
-## User stories
-
-- En tant qu'utilisateur, je veux ajouter une habitude afin de mieux m'y tenir
-- En tant qu'utilisateur, je veux ajouter une entrée à mon habitude afin de confirmer que je l'ai bien réalisée
-- En tant qu'utilisateur, je veux voir toutes mes habitudes afin de savoir ce que j'ai à faire pour la journée
-- En tant qu'utilisateur, je veux voir toutes mes entrées afin de voir quelles habitudes ont été remplies
-- En tant qu'utilisateur, je veux pouvoir supprimer une habitude afin de ne pas m'encombrer d'habitudes que je ne suis plus
+Cette API (Node.js + Express) permet de gérer des **habitudes quotidiennes** et de suivre leur réalisation.
+Elle propose plusieurs routes pour créer, lire et supprimer des habitudes et leurs entrées.
 
 ## Schema de données
 
-- Habitude :
-  - ID : Identifiants unique de l'élément Habitude (String)
-  - Nom : Contenu textuel de l'habitude (String)
-- Entrée :
-  - ID : Identifiants unique de l'élément Entrée (String)
-  - Date : Quand l'entrée a été enregistrée (Date)
-  - ID_Habitude : Identifiant unique de l'habitude liée à l'entrée (String)
+### Habitude :
+
+- `id` : Identifiants unique (String)
+- `name` : Contenu textuel de l'habitude (String)
+
+### Entrée :
+
+- `id` : Identifiants unique (String)
+- `date` : Quand l'entrée a été enregistrée (Date)
+- `habit_id` : Identifiant de l'habitude associée (String)
+
+## Les endpoints
+
+| Méthode | Endpoint                    | Description                                               |
+| ------- | --------------------------- | --------------------------------------------------------- |
+| GET     | `/api/v1/habits`            | Récupérer toutes les habitudes                            |
+| GET     | `/api/v1/entries/:date/:id` | Récupérer les entrées d’une habitude pour une date donnée |
+| GET     | `/api/v1/entries/:id`       | Récupérer toutes les entrées d’une habitude               |
+| POST    | `/api/v1/habits`            | Créer une nouvelle habitude                               |
+| POST    | `/api/v1/entries/:id`       | Créer une entrée pour une habitude                        |
+| DELETE  | `/api/v1/habits/:id`        | Supprimer une habitude                                    |
+| DELETE  | `/api/v1/entries/:id`       | Supprimer une entrée                                      |
+| DELETE  | `/api/v1/entries/habit/:id` | Supprimer toutes les entrées liées à une habitude         |
+
+## Prérequis
+
+- Node.js >= 18.0.0
+- npm >= 9.0.0
+- MongoDB (local ou MongoDB Atlas)
+
+### Configuration MongoDB
+
+1. **MongoDB locale**
+
+- Installer MongoDB : [https://www.mongodb.com/docs/manual/installation/](https://www.mongodb.com/docs/manual/installation/)
+- Démarrer le serveur : `mongod`
+- URL de connexion : `mongodb://localhost:27017/habits`
+
+2. **MongoDB Atlas (optionnel)**
+
+- Créer un compte Atlas : [https://www.mongodb.com/cloud/atlas](https://www.mongodb.com/cloud/atlas)
+- Créer un cluster et une base de données `habits`
+- Récupérer l’URI de connexion
+
+## Installation
+
+```bash
+# Cloner le projet
+git clone https://github.com/AntooinePetit/habits
+cd habits-main/back
+
+# Installer les dépendances
+npm install
+
+```
+
+## Utilisation
+
+```bash
+node .\app.js
+```
+
+Par défaut, l'API tourne sur http://localhost:3000
+
+## Configuration
+
+Créer un fichier `.env` ou modifier le fichier `.env.example` en `.env`.
+
+```env
+PORT=3000
+MONGO_URI=<votre_uri_mongodb>
+```
+
+## Exemples d'utilisation
+
+### Créer une nouvelle habitude
+
+**Méthode :** `POST`
+**URL :** `http://localhost:3000/api/v1/habits`
+**JSON :**
+
+```json
+{
+  "name": "Boire 2L d'eau"
+}
+```
+
+**Étapes dans Thunder Client :**
+
+1. Installer l'extension **Thunder Client** dans VS Code.
+2. Ouvrir Thunder Client dans VS Code.
+3. Cliquer sur **New Request**.
+4. Choisir la méthode `POST`.
+5. Copier l'URL `http://localhost:3000/api/v1/habits`.
+6. Aller dans **Body** -> **JSON** -> coller le JSON.
+7. Cliquer sur **Send**.
+
+**Réponse attendue :**
+
+```json
+{
+  "habit": {
+    "name": "Boire 2L d'eau",
+    "_id": "68dbaebbc7dc0bfb7f8e3e5f",
+    "__v": 0
+  }
+}
+```
+
+### Récupérer toutes les habitudes
+
+**Méthode :** `GET`
+**URL :** `http://localhost:3000/api/v1/habits`
+
+**Étapes dans Thunder Client :**
+
+1. Nouvelle requête.
+2. Méthode `GET`, copier l'URL `http://localhost:3000/api/v1/habits`.
+3. Cliquer sur **Send**.
+
+**Réponse attendue :**
+
+```json
+[
+  {
+    "_id": "68dbaebbc7dc0bfb7f8e3e5f",
+    "name": "Boire 2L d'eau",
+    "__v": 0
+  },
+  {
+    "_id": "68dbb00fc7dc0bfb7f8e3e61",
+    "name": "Se brosser les dents",
+    "__v": 0
+  }
+]
+```
