@@ -56,7 +56,7 @@ Elle propose plusieurs routes pour créer, lire et supprimer des habitudes et le
 ```bash
 # Cloner le projet
 git clone https://github.com/AntooinePetit/habits
-cd habits-main/back
+cd habits/back
 
 # Installer les dépendances
 npm install
