@@ -143,3 +143,25 @@ MONGO_URI=<votre_uri_mongodb>
   }
 ]
 ```
+
+## Structure
+
+```bash
+back/
+├── controllers/
+│   ├── entriesController.js
+│   └── habitsController.js
+├── models/
+│   ├── entriesModel.js
+│   └── habitsModel.js
+├── routes/
+│   ├── entriesRoutes.js
+│   └── habitsRoutes.js
+├── .env
+├── app.js
+├── db.js
+├── package-lock.json
+├── package.json
+└── README.md
+```
+
