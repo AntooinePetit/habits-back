@@ -1,5 +1,9 @@
 # API - Suivi d'Habitudes
 
+![Node.js](https://img.shields.io/badge/Node-v22.14.0-green)
+![npm](https://img.shields.io/badge/npm-v11.6.0-blue)
+![Express](https://img.shields.io/badge/Express-v5.1.0-lightgrey)
+
 ## Description
 
 Cette API (Node.js + Express) permet de gérer des **habitudes quotidiennes** et de suivre leur réalisation.
@@ -164,4 +168,3 @@ back/
 ├── package.json
 └── README.md
 ```
-
