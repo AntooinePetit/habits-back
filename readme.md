@@ -185,16 +185,26 @@ back/
 
 ### Hébergement
 
-- Se rendre sur Render :
-  - Se connecter en utilisant un compte GitHub
-  - Cliquer sur "Add new"
-  - Choisir "Web Service"
-  - Choisir le repository correspondant
-  - Choisir les paramètres suivants :
-    - Language : Node
-    - Region : Frankfurt (EU Central) -- Si vous voulez être héberger en Europe
-    - Build Command : `npm install`
-    - Start Command : `node ./app.js`
-    - Instance Type : Free
-    - Environment Variables > Add from .env > Copier ici votre fichier .env créé plus tôt > Add variables
-  - Cliquer sur "Deploy Web Service"
+- Se rendre sur [Render](https://render.com/)
+- Se connecter en utilisant un compte GitHub
+- Cliquer sur "Add new"
+- Choisir "Web Service"
+- Choisir le repository correspondant
+- Choisir les paramètres suivants :
+  - Language : Node
+  - Region : Frankfurt (EU Central) -- Si vous voulez être héberger en Europe
+  - Build Command : `npm install`
+  - Start Command : `node ./app.js`
+  - Instance Type : Free
+  - Environment Variables > Add from .env > Copier ici votre fichier .env créé plus tôt > Add variables
+- Cliquer sur "Deploy Web Service"
+
+Render mettra votre serveur back "en veille" si il n'est pas utilisé après un temps assez court. Pour éviter de devoir attendre le redémarrage du serveur à chaque utilisation, voici les étapes à suivre :
+
+- Se rendre sur [UtpimeRobot](https://uptimerobot.com/)
+- Créer un compte/se connecter
+- Ajouter un moniteur
+- Choisir "Ping Monitoring"
+- Copier le lien de votre back
+- Régler sur 5 minutes
+- Cliquer sur "Create monitor"
