@@ -37,8 +37,8 @@ Elle propose plusieurs routes pour créer, lire et supprimer des habitudes et le
 
 ## Prérequis
 
-- Node.js >= 18.0.0
-- npm >= 9.0.0
+- Node.js >= 22.14.0
+- npm >= 11.6.0
 - MongoDB (local ou MongoDB Atlas)
 
 ### Configuration MongoDB
@@ -46,7 +46,7 @@ Elle propose plusieurs routes pour créer, lire et supprimer des habitudes et le
 1. **MongoDB locale**
 
 - Installer MongoDB : [https://www.mongodb.com/docs/manual/installation/](https://www.mongodb.com/docs/manual/installation/)
-- Démarrer le serveur : `mongod`
+- Démarrer le serveur : `mongodb`
 - URL de connexion : `mongodb://localhost:27017/habits`
 
 2. **MongoDB Atlas (optionnel)**
@@ -59,21 +59,13 @@ Elle propose plusieurs routes pour créer, lire et supprimer des habitudes et le
 
 ```bash
 # Cloner le projet
-git clone https://github.com/AntooinePetit/habits
+git clone --recurse-submodules https://github.com/AntooinePetit/habits
 cd habits/back
 
 # Installer les dépendances
 npm install
 
 ```
-
-## Utilisation
-
-```bash
-node .\app.js
-```
-
-Par défaut, l'API tourne sur http://localhost:3000
 
 ## Configuration
 
@@ -83,6 +75,15 @@ Créer un fichier `.env` ou modifier le fichier `.env.example` en `.env`.
 PORT=3000
 MONGO_URI=<votre_uri_mongodb>
 ```
+
+## Utilisation en local
+
+```bash
+node .\app.js
+```
+
+Par défaut, l'API tourne sur http://localhost:3000
+
 
 ## Exemples d'utilisation
 
@@ -168,3 +169,30 @@ back/
 ├── package.json
 └── README.md
 ```
+
+## Déploiement de l'application
+
+### Création d'un repository GitHub
+
+- Créer un repository GitHub pour le back du projet.
+- Dans un terminal localisé dans le dossier back, écrire :
+```bash
+git remote add myrepo <lien_de_votre_repository>
+git push -u myrepo main
+```
+
+### Hébergement 
+
+- Se rendre sur un site d'hébergement (Vercel, Render, etc...). Exemple avec Render :
+  - Se connecter en utilisant un compte GitHub 
+  - Cliquer sur "Add new"
+  - Choisir "Web Service"
+  - Choisir le repository correspondant
+  - Choisir les paramètres suivants :
+    - Language : Node
+    - Region : Frankfurt (EU Central) -- Si vous voulez être héberger en Europe
+    - Build Command : npm install
+    - Start Command : node ./app.js
+    - Instance Type : Free
+    - Environment Variables > Add from .env > Copier ici votre fichier .env créé plus tôt > Add variables
+  - Deploy Web Service
