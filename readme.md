@@ -3,6 +3,7 @@
 ![Node.js](https://img.shields.io/badge/Node-v22.14.0-green)
 ![npm](https://img.shields.io/badge/npm-v11.6.0-blue)
 ![Express](https://img.shields.io/badge/Express-v5.1.0-lightgrey)
+![MongoDB](https://img.shields.io/badge/MongoDB-v8.0.14-green?logo=mongodb)
 
 ## Description
 
@@ -84,7 +85,6 @@ node .\app.js
 
 Par défaut, l'API tourne sur http://localhost:3000
 
-
 ## Exemples d'utilisation
 
 ### Créer une nouvelle habitude
@@ -149,6 +149,10 @@ Par défaut, l'API tourne sur http://localhost:3000
 ]
 ```
 
+### Voir toutes les utilisations
+
+Pour voir toutes les utilisations de l'API, rendez vous [ici](./DOCS.md).
+
 ## Structure
 
 ```bash
@@ -172,27 +176,25 @@ back/
 
 ## Déploiement de l'application
 
-### Création d'un repository GitHub
+### Faire un fork
 
-- Créer un repository GitHub pour le back du projet.
-- Dans un terminal localisé dans le dossier back, écrire :
-```bash
-git remote add myrepo <lien_de_votre_repository>
-git push -u myrepo main
-```
+- Se rendre sur le [repository](https://github.com/AntooinePetit/habits-back)
+- Cliquer sur "Fork"
+- Nommer le fork
+- Cliquer sur "Create fork"
 
-### Hébergement 
+### Hébergement
 
-- Se rendre sur un site d'hébergement (Vercel, Render, etc...). Exemple avec Render :
-  - Se connecter en utilisant un compte GitHub 
+- Se rendre sur Render :
+  - Se connecter en utilisant un compte GitHub
   - Cliquer sur "Add new"
   - Choisir "Web Service"
   - Choisir le repository correspondant
   - Choisir les paramètres suivants :
     - Language : Node
     - Region : Frankfurt (EU Central) -- Si vous voulez être héberger en Europe
-    - Build Command : npm install
-    - Start Command : node ./app.js
+    - Build Command : `npm install`
+    - Start Command : `node ./app.js`
     - Instance Type : Free
     - Environment Variables > Add from .env > Copier ici votre fichier .env créé plus tôt > Add variables
-  - Deploy Web Service
+  - Cliquer sur "Deploy Web Service"
